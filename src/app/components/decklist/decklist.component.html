@@ -1,0 +1,16 @@
+<div class="container">
+    <input type="search" class="rounded mt-5" style="width: 300px" [(ngModel)]="userNameSearched"
+        placeholder="Chercher les decks de l'utilisateur..." />
+    <button class="btn btn-primary" (click)="findDecksFromUser()">Rechercher</button>
+
+    <h1 class="text-center m-5" style="color:darkslateblue;">Liste des decks</h1>
+    <div class="row">
+        <div class="col-4" *ngFor="let deck of decklist.decks">
+            <div class="card-body">
+                <h5 class="deck-name"> {{deck.name}}</h5>
+                <a href="#" class="btn btn-danger" routerLinkActive="active" [routerLink]="['/decklist/', deck.id]">Détail</a>
+            </div>
+        </div>
+    </div>
+
+</div>
