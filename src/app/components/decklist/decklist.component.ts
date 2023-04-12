@@ -5,7 +5,7 @@ import { DecklistService } from 'src/app/service/decklist.service';
 @Component({
   selector: 'app-decklist',
   templateUrl: './decklist.component.html',
-  styleUrls: ['./decklist.component.css']
+  styleUrls: ['./decklist.component.scss']
 })
 export class DecklistComponent implements OnInit {
 
