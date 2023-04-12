@@ -11,6 +11,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { DeckDetailComponent } from './deck-detail/deck-detail.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DeckDetailComponent } from './deck-detail/deck-detail.component';
     CardDetailComponent,
     HomepageComponent,
     LoginComponent,
-    DeckDetailComponent
+    DeckDetailComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

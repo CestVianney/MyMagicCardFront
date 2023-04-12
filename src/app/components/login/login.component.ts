@@ -9,7 +9,14 @@ export class LoginComponent implements OnInit {
 
   constructor() { }
 
+  pseudo!: string;
+  password!: string;
+
   ngOnInit(): void {
   }
+
+  login(){}
+
+  onSubmit(){}
 
 }
