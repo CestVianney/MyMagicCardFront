@@ -3,13 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { map, take, Observable } from 'rxjs';
 import { DeckFromUser } from '../interfaces/deck-from-user';
 import { DeckListFromUserDb } from '../interfaces/deck-list-from-user';
-import { JsonFromScryfall } from '../interfaces/json-from-scryfall';
 import { DecklistService } from '../service/decklist.service';
 
 @Component({
   selector: 'app-deck-detail',
   templateUrl: './deck-detail.component.html',
-  styleUrls: ['./deck-detail.component.css']
+  styleUrls: ['./deck-detail.component.scss']
 })
 export class DeckDetailComponent implements OnInit {
 

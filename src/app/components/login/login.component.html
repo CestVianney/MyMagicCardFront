@@ -16,6 +16,7 @@
             <div class="form-group text-center">
                 <button class="btn btn-secondary" [routerLink]="['/signup']">Créer un compte</button>
             </div>
-        </div>
+            <p *ngIf="isExistingUser == false" style="color:red">Nom de compte ou mot de passe erroné !</p>
+                </div>
     </div>
 </div>

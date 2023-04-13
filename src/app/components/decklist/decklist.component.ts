@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DeckListFromUserDb } from 'src/app/interfaces/deck-list-from-user';
 import { DecklistService } from 'src/app/service/decklist.service';
+import { TokenService } from 'src/app/service/token.service';
 
 @Component({
   selector: 'app-decklist',
@@ -9,12 +10,15 @@ import { DecklistService } from 'src/app/service/decklist.service';
 })
 export class DecklistComponent implements OnInit {
 
-  userNameSearched: string = "";
-  constructor(private decklistService: DecklistService) { }
-
+  userNameSearched: string = '';
+  constructor(private decklistService: DecklistService, private tokenService: TokenService) { }
   decklist: any;
 
   ngOnInit(): void {
+    this.tokenService.checkActualUser().subscribe(response => this.userNameSearched = response);
+    if(this.userNameSearched != '') {
+      this.findDecksFromUser();
+    }
   }
 
   findDecksFromUser() {
