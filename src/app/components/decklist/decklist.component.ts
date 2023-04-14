@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DeckListFromUserDb } from 'src/app/interfaces/deck-list-from-user';
 import { DecklistService } from 'src/app/service/decklist.service';
 import { TokenService } from 'src/app/service/token.service';
 
@@ -28,5 +27,9 @@ export class DecklistComponent implements OnInit {
         this.decklist = data;
         console.log("erreur ici");
       });
+  }
+
+  createDeck() {
+
   }
 }

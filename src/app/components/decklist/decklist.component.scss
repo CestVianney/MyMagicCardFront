@@ -1,0 +1,15 @@
+.firstline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; // ajout de cette ligne pour aligner verticalement les éléments
+
+    .firstline-search {
+      // styles pour le conteneur de la recherche
+    }
+    
+    .firstline-create {
+      // styles pour le conteneur de la création de deck
+    }
+    
+    // autres styles pour la première ligne si nécessaire
+  }

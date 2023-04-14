@@ -12,6 +12,8 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { DeckDetailComponent } from './deck-detail/deck-detail.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { NewdeckComponent } from './components/newdeck/newdeck.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -22,13 +24,15 @@ import { SignupComponent } from './components/signup/signup.component';
     HomepageComponent,
     LoginComponent,
     DeckDetailComponent,
-    SignupComponent
+    SignupComponent,
+    NewdeckComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

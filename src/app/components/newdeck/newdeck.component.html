@@ -1,0 +1,22 @@
+<div class="row justify-content-center align-items-center mt-5">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="deckname">Nom du deck</label>
+            <input type="text" class="form-control" id="deckname" aria-describedby="deckname"
+                placeholder="Entrez un nom..." name="deckname" [(ngModel)]="deck">
+        </div>
+        <div class="form-group">
+            <label for="commander">Commander</label>
+            <input type="text" class="form-control" id="commander" placeholder="Choix du commander"
+                name="commander" [(ngModel)]="commander" (input)="findCommanders()">
+                <ul *ngIf="listCartesApi">
+                    <li *ngFor="let carteApi of listCartesApi" (click)="selectionnerCommander(carteApi.name, carteApi.coloridentity)">{{carteApi.name}}</li>
+                  </ul>
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button class="btn btn-primary" (click)="submitDeck()">Créer</button>
+    </div>
+</div>
