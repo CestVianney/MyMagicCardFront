@@ -1,18 +1,40 @@
 .form-group {
-    margin-bottom: 1.5rem;
-  }
-  
-  .form-control {
-    display: block;
-    width: 100%;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    transition: border-color 0.15s
-  }
+  margin-bottom: 1.5rem;
+  display:flex;
+  justify-content:space-between;
+}
+
+.form-control {
+  display: block;
+  width: 50%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #32689f;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s
+}
+
+.inputcolors-preview {
+  display:flex;
+  flex-direction: row;
+  width: 100%
+}
+
+.input-colors {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+mat-form-field {
+  width: 200px;
+}
+.icon {
+  width:40px;
+  height:40px;
+  filter: brightness(20%)
+}

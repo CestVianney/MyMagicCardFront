@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { DeckDetailComponent } from './deck-detail/deck-detail.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { NewdeckComponent } from './components/newdeck/newdeck.component';
+import { CanaccessGuard } from './guards/canaccess.guard';
 
 const routes: Routes = [
   {path: 'decklist', component: DecklistComponent},
@@ -15,7 +16,7 @@ const routes: Routes = [
   {path: 'carte/:name', component: CardDetailComponent},
   {path: 'signup', component: SignupComponent},
   {path: '', component: HomepageComponent},
-  {path: 'newdeck', component: NewdeckComponent}
+  {path: 'newdeck', component: NewdeckComponent, canActivate:[CanaccessGuard]}
 ];
 
 @NgModule({

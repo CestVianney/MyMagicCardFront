@@ -1,26 +1,40 @@
 <div class="row justify-content-center align-items-center mt-5">
-    <div class="col-md-6">
+    <div class="col-md-8">
         <div class="form-group">
-            <label for="deckname">Nom du deck</label>
             <input type="text" class="form-control" id="deckname" aria-describedby="deckname"
-                placeholder="Entrez un nom..." name="deckname" [(ngModel)]="deck">
+                placeholder="Nom du deck" name="deckname" [(ngModel)]="deck">
+                <button class="btn btn-primary ml-auto mt-3" (click)="submitDeck()">Créer</button>
         </div>
 
-        <form #form="ngForm">
-            <mat-form-field>
-                <input type="text" matInput [matAutocomplete]="auto" [formControl]="myControl">
-                <mat-autocomplete #auto="matAutocomplete">
-                    <mat-option *ngFor="let suggestion of filteredSuggestions | async" [value]="suggestion.name">
-                        {{ suggestion.name }}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
-        </form>
-
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        <div class="inputcolors-preview row">
+            <div class="input-colors col-md-6">
+                <div class="commanderinput">
+                    <form #form="ngForm">
+                        <mat-form-field>
+                            <input type="text" matInput [matAutocomplete]="auto" [formControl]="myControl"
+                                class="inputfield" placeholder="Commander...">
+                            <mat-autocomplete #auto="matAutocomplete">
+                                <mat-option *ngFor="let suggestion of filteredSuggestions | async"
+                                    [value]="suggestion.name" (mouseover)="setHoveredCommander(suggestion)"
+                                    (click)="setHoveredCommander(suggestion)">
+                                    {{ suggestion.name }}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </form>
+                </div>
+                <div class="commandercolors">
+                    <img src="../../../assets/images/colors/plaine.png" class="icon" id="plaine">
+                    <img src="../../../assets/images/colors/ile.png" class="icon" id="ile">
+                    <img src="../../../assets/images/colors/marais.png" class="icon" id="marais">
+                    <img src="../../../assets/images/colors/montagne.png" class="icon" id="montagne">
+                    <img src="../../../assets/images/colors/foret.png" class="icon" id="foret">
+                </div>
+            </div>
+            <div class="preview col-md-6">
+                <img class="card-img-top previewimg" src="{{selectedCard}}" alt="{{commander}}">
+            </div>
         </div>
-        <button class="btn btn-primary" (click)="submitDeck()">Créer</button>
+        
     </div>
 </div>

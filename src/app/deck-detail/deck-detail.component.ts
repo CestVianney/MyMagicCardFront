@@ -48,7 +48,7 @@ export class DeckDetailComponent implements OnInit {
   getImageFromScryfall(name: string, card: DeckFromUser) {
     return this.decklistService.getImageFromScryfall(name).pipe(
       take(1),
-      map((data) => data.image_uris.small)).subscribe((value) => {
+      map((data) => data.image_uris.normal)).subscribe((value) => {
         // ici, vous pouvez utiliser la valeur "value" comme vous le souhaitez
         card.img = value;
       });
