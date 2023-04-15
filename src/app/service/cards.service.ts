@@ -15,7 +15,6 @@ export class CardsService {
   }
 
   getCommandersBeginningWith(name: string, type: string): Observable<any> {
-    console.log('http://localhost:8080/api/cartes/cartetype?name=' + name + '&type=' + type);
     return this.http.get('http://localhost:8080/api/cartes/cartetype?name=' + name + '&type=' + type);
   }
 
