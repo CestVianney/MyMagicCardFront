@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, map, take } from 'rxjs';
 import { DecklistService } from 'src/app/service/decklist.service';
 import { TokenService } from 'src/app/service/token.service';
 
@@ -23,13 +24,14 @@ export class DecklistComponent implements OnInit {
   findDecksFromUser() {
     this.decklistService.getUserDecks(this.userNameSearched).subscribe(
       data => {
-        console.log(data);
         this.decklist = data;
-        console.log("erreur ici");
       });
   }
 
-  createDeck() {
-
+  getArtFromCurrentDeck(commander: string): Observable<string> {
+    return this.decklistService.getImageFromScryfall(commander).pipe(
+      take(1),
+      map((data) => data.image_uris.art_crop)
+    );
   }
 }

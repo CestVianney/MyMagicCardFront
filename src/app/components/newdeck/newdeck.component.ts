@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable, map, of, startWith, switchMap, take } from 'rxjs';
 import { CommanderApi } from 'src/app/interfaces/commander-api';
 import { CardsService } from 'src/app/service/cards.service';
 import { DecklistService } from 'src/app/service/decklist.service';
 import { TokenService } from 'src/app/service/token.service';
+import { Deckresponse } from 'src/app/interfaces/deckresponse';
 
 @Component({
   selector: 'app-newdeck',
@@ -16,7 +18,7 @@ export class NewdeckComponent {
   filteredSuggestions!: Observable<CommanderApi[]>;
   myControl = new FormControl();
 
-  constructor(private cardsService: CardsService, private decklistService: DecklistService, private tokenService: TokenService){
+  constructor(private cardsService: CardsService, private decklistService: DecklistService, private tokenService: TokenService, private router:Router){
     this.tokenService.checkActualUser().subscribe(user => this.actualUser = user);
     this.filteredSuggestions = this.myControl.valueChanges.pipe(
       startWith(''),
@@ -27,7 +29,7 @@ export class NewdeckComponent {
               const commanders: CommanderApi[] = [];
               data.forEach((commanderApi: any) => {
                 if (commanders.length < 10) {
-                  const newCommander: CommanderApi = { name: commanderApi.name, coloridentity: commanderApi.coloridentity };
+                  const newCommander: CommanderApi = { id: commanderApi.id, name: commanderApi.name, coloridentity: commanderApi.coloridentity };
                   commanders.push(newCommander);
                 }
               });
@@ -42,12 +44,20 @@ export class NewdeckComponent {
   }
   actualUser = '';
   selectedCard = '';
-    commander = '';
+  commander = '';
   deck = '';
-  commanderApi: CommanderApi = {name:'', coloridentity:''};
+  commanderApi: CommanderApi = {id: 0, name:'', coloridentity:''};
 
   submitDeck() {
-    this.decklistService.createDeck(this.actualUser, this.deck, this.commanderApi.name, this.commanderApi.coloridentity).subscribe((response) => console.log(response));
+    this.decklistService.createDeck(this.actualUser, this.deck, this.commanderApi.name, this.commanderApi.coloridentity).pipe(
+      switchMap((response: Deckresponse) => {
+        console.log(this.commanderApi.id + "=====" + response.id);
+        return this.decklistService.postCarteToDeck(this.commanderApi.id, response.id);
+      })
+    ).subscribe((response: any) => {
+      // Le résultat de votre deuxième appel API se trouve ici
+    });
+    this.router.navigate(['/decklist']);
   }
 
   findCommanders() {
@@ -55,7 +65,8 @@ export class NewdeckComponent {
     if(this.myControl != null && this.myControl.value.length > 2) {
     return this.cardsService.getCommandersBeginningWith(this.commander, 'Legendary').pipe(
       map((data: any) => {
-        const commander: CommanderApi = {name: data.name, coloridentity: data.coloridentity};
+        console.log(data);
+        const commander: CommanderApi = {id: data.id, name: data.name, coloridentity: data.coloridentity};
         return commander;
       }
       )

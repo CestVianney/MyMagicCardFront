@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, take, Observable } from 'rxjs';
+import { map, take } from 'rxjs';
 import { DeckFromUser } from '../interfaces/deck-from-user';
 import { DeckListFromUserDb } from '../interfaces/deck-list-from-user';
 import { DecklistService } from '../service/decklist.service';
@@ -36,7 +36,6 @@ export class DeckDetailComponent implements OnInit {
           let card: DeckFromUser = {id: 0, name: "", img: ""};
           card.id = cardDb.id;
           card.name = cardDb.name;
-          // card.img = 
           this.getImageFromScryfall(cardDb.name, card);
           this.cards.push(card);
         })
@@ -49,7 +48,6 @@ export class DeckDetailComponent implements OnInit {
     return this.decklistService.getImageFromScryfall(name).pipe(
       take(1),
       map((data) => data.image_uris.normal)).subscribe((value) => {
-        // ici, vous pouvez utiliser la valeur "value" comme vous le souhaitez
         card.img = value;
       });
   }
