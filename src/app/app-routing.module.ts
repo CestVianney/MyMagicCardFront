@@ -10,9 +10,9 @@ import { NewdeckComponent } from './components/newdeck/newdeck.component';
 import { CanaccessGuard } from './guards/canaccess.guard';
 
 const routes: Routes = [
-  {path: 'decklist', component: DecklistComponent},
+  {path: 'decklist/:user', component: DecklistComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'decklist/:id', component: DeckDetailComponent},
+  {path: 'decklist/detail/:id', component: DeckDetailComponent},
   {path: 'carte/:name', component: CardDetailComponent},
   {path: 'signup', component: SignupComponent},
   {path: '', component: HomepageComponent},

@@ -4,6 +4,7 @@ import { map, take } from 'rxjs';
 import { DeckFromUser } from '../interfaces/deck-from-user';
 import { DeckListFromUserDb } from '../interfaces/deck-list-from-user';
 import { DecklistService } from '../service/decklist.service';
+import { TokenService } from '../service/token.service';
 
 @Component({
   selector: 'app-deck-detail',
@@ -16,8 +17,10 @@ export class DeckDetailComponent implements OnInit {
   deck_detail!: DeckListFromUserDb;
   cards: DeckFromUser[] = [];
   userNameSearched: string = "";
-  constructor(private actRoute: ActivatedRoute, private decklistService: DecklistService) {
+  actualUser: string = "";
+  constructor(private actRoute: ActivatedRoute, private decklistService: DecklistService, private tokenService: TokenService) {
     this.deck_id = this.actRoute.snapshot.params['id'];
+    this.tokenService.checkActualUser().subscribe(response => this.actualUser = response);
    }
 
 

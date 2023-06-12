@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
       this.tokenService.setActualUser(this.pseudo);
       this.router.navigate(['']);
     }, (error) => {
-      console.log("je passe bien par ici");
       this.isExistingUser = false;
       console.error(error);
     });;

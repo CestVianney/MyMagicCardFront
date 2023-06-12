@@ -1,1 +1,22 @@
-<p>homepage works!</p>
+<div class="homepage d-flex align-items-center justify-content-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4" [ngClass]="{'gris': actualUser !== ''}">
+          <div class="block" (click)="login()">
+            <p>Se connecter</p>          
+          </div>
+        </div>
+        <div class="col-md-4" [ngClass]="{'gris': actualUser == ''}">
+          <div class="block" (click)="accessDecklist()">
+            <p>Mes decks</p>
+          </div>
+        </div>
+        <div class="col-md-4" [ngClass]="{'gris': actualUser == ''}">
+          <div class="block">
+            Reprendre ma dernière création
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
